@@ -24,12 +24,17 @@
     <!-- Body of index.html -->
 
     <body class="light-theme">
+        
         <div id="container">
 
             <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <br>
+            
             <!-- Heading of section -->
 
             <h1 class="app-header">Nolan Berryhill's Landing Page</h1>
+            
             <div id="card-example">
 
                 <!-- Heading of section -->
@@ -39,12 +44,15 @@
                 <!-- Line through-->
 
                 <hr>
+                
                 <div class="card">
+                    
                     <div class="card title">
 
                         <!-- Heading of list -->
 
                         <h3>Weekly Assignments</h3>
+                        
                         <div class=card-content> 
 
                             <!-- List of assignments -->
@@ -104,7 +112,7 @@
 
                 //Assigns variables
                 let colorTheme = document.body.classList;
-                let iconMode = x.classlist;
+                let iconMode = x.classList;
 
                 //Assigns string actions
                 if (colorTheme.value === "light-theme") {
@@ -123,6 +131,13 @@
                 colorTheme.value = localStorage.getItem("mode");
                 iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
                 document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            }
+
+            function clearLocalStorage() {
+                localStorage.clear();
+                document.body.classList.value = "light-theme";
+                document.getElementById("icon-text").innerHTML = "Light Mode";
+                document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
             }
         </script>
         
