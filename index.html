@@ -27,6 +27,8 @@
         
         <div id="container">
 
+            <!-- Button to switch themes-->
+
             <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
             
             <br>
@@ -45,6 +47,8 @@
 
                 <hr>
                 
+                <!-- Opening of divs-->
+
                 <div class="card">
                     
                     <div class="card title">
@@ -133,6 +137,7 @@
                 document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
             }
 
+            //Function for clearLocalStorage
             function clearLocalStorage() {
                 localStorage.clear();
                 document.body.classList.value = "light-theme";
