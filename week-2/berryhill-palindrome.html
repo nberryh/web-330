@@ -14,11 +14,12 @@
 
     <head>
         <title>WEB 330 - Enterprise JavaScript II</title>
-        <link href="https://github.com/nberryh/web-330/blob/main/site.css" type="text/css" rel="stylesheet">
-        <link href="https://github.com/nberryh/web-330/blob/main/theme.css" type="text/css" rel="stylesheet">
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-palindrome.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <script src="https://github.com/nberryh/web-330/blob/main/theme.js"></script>
+        <script src="theme.js"></script>
     </head>
 
     <!-- Body of index.html -->
@@ -49,19 +50,36 @@
 
                             <div class="form">
 
-                                <duv class="form-field"></div>
+                                <div class="form-field">
+                                    <label for="txtPhrase">Phrase Value:</label>
+                                    <input type="text" class="input" id="txtPhrase" name="txtPhrase">
+                                </div>
 
-                                <label for="txtPhrase">Phrase Value:</label>
-                                <input type="text" class="input" id="txtPhrase" name="txtPhrase">
-                                <button class="form-field" id="btnCheckPhrase" onclick="showResults()">Check Phrase</button>
+                                <div class="form-field">
+                                    <button class="form-field" id="btnCheckPhrase" onclick="showResults()">Check Phrase</button>
+                                </div>
 
                                 <!-- Closing of code -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <script src="berryhill-palindrome.js"></script>
             </div>
+            <br>
+            <div class="card">
+                    
+                <div class="card-title">Palindrome Checker</div>
+                    
+                    <div class=card-content> 
+
+                        <div class="form">
+                            <div id="assign-results-header"></div>
+                            <div id="assign-results" class="assign-results-text"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="berryhill-palindrome.js"></script>            
         </div>
         
         <script>

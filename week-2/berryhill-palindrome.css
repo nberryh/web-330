@@ -1,0 +1,31 @@
+/**
+    Title: site.css
+    Author: Nolan Berryhill
+    Date: 04 June 2023
+    Description: css files for week 2
+*/
+
+h1 {
+    border: none;
+    background-color: none;
+    color: black;
+}
+
+.card-title {
+    text-align: center;
+    font-size: large;
+}
+
+.card{
+    margin: auto;
+    text-align: center;
+    width: 90%;
+}
+
+#btnCheckPhrase  {
+    background-color: #4F3674;
+}
+
+#assign-results-header{
+    text-align: left;
+}
