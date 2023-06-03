@@ -1,8 +1,8 @@
 <!--
     Title: index.html
     Author: Nolan Berryhill
-    Date: 05/28/2023
-    Description: Landing Page for WEB 330
+    Date: 06/04/2023
+    Description: Palindrome App for Week 2
 -->
 
 <!-- index.html -->
@@ -14,11 +14,11 @@
 
     <head>
         <title>WEB 330 - Enterprise JavaScript II</title>
-        <link href="site.css" type="text/css" rel="stylesheet">
-        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="https://github.com/nberryh/web-330/blob/main/site.css" type="text/css" rel="stylesheet">
+        <link href="https://github.com/nberryh/web-330/blob/main/theme.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <script src="theme.js"></script>
+        <script src="https://github.com/nberryh/web-330/blob/main/theme.js"></script>
     </head>
 
     <!-- Body of index.html -->
@@ -35,79 +35,37 @@
             
             <!-- Heading of section -->
 
-            <h1 class="app-header">Nolan Berryhill's Landing Page</h1>
+            <h1 class="app-header">Welcome to the Palindrome App!</h1>
             
-            <div id="card-example">
-
-                <!-- Heading of section -->
-
-                <h2>WEB 330 Enterprise JavaScript II</h2>
-
-                <!-- Line through-->
-
-                <hr>
+            <div id="assign-container">
                 
                 <!-- Opening of divs-->
 
                 <div class="card">
                     
-                    <div class="card-title">
-
-                        <!-- Heading of list -->
-
-                        <h3>Weekly Assignments</h3>
+                    <div class="card-title">Palindrome Checker</div>
                         
                         <div class=card-content> 
 
-                            <!-- List of assignments -->
+                            <div class="form">
 
-                            <ul>
-                                <li>Assignment 2.2</li>
-                                <li>Assignment 3.2</li>
-                                <li>Assignment 4.2</li>
-                                <li>Assignment 5.2</li>
-                                <li>Assignment 6.2</li>
-                                <li>Assignment 7.2</li>
-                                <li>Assignment 8.2</li>
-                                <li>Assignment 9.2</li>
-                            </ul>
+                                <duv class="form-field"></div>
 
-                            <!-- Heading of section -->
-
-                            <h3>Projects</h3>
-
-                                <!-- List of projects -->
-
-                                <ul>
-                                    <li>Personal Portfolio</li>
-                                    <li><a href="https://nberryh.github.io/web-231/index.html">WEB 231's Landing Page</a></li>
-                                </ul>
-
-                                <!-- Heading of section -->
-
-                            <h4>Important Links</h4>
-
-                                <!-- List of links -->
-
-                                <ul>
-                                    <li><a href="https://github.com/nberryh/web-330">WEB 330's GitHub Repository</a></li>
-                                    <li><a href="https://bruinconnect.bellevue.edu/ ">BRUIN Connect</a></li>
-                                    <li><a href="https://validator.w3.org/">W3C HTML Validator</a></li>
-                                    <li><a href="http://jigsaw.w3.org/css-validator/">W3S CSS Validator</a></li>
-                                    <li><a href="https://www.w3schools.com/html/">HTML Tutorial</a></li>
-                                    <li><a href="https://www.w3schools.com/js/js_best_practices.asp">JavaScript Best Practices</a></li>
-                                </ul>
+                                <label for="txtPhrase">Phrase Value:</label>
+                                <input type="text" class="input" id="txtPhrase" name="txtPhrase">
+                                <button class="form-field" id="btnCheckPhrase" onclick="showResults()">Check Phrase</button>
 
                                 <!-- Closing of code -->
+                            </div>
                         </div>
                     </div>
                 </div>
+                <script src="berryhill-palindrome.js"></script>
             </div>
         </div>
-
-        <!-- JavaScript within HTML -->
-
+        
         <script>
+
             //Set default theme to light
             setDefaultTheme();
 
@@ -144,9 +102,8 @@
                 document.getElementById("icon-text").innerHTML = "Light Mode";
                 document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
             }
+
+            // Closing of code 
         </script>
-        
-        <!-- Closing of code -->
-        
     </body>
 </html>
