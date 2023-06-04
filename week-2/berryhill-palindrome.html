@@ -1,5 +1,5 @@
 <!--
-    Title: index.html
+    Title: berryhill-palindrome.html
     Author: Nolan Berryhill
     Date: 06/04/2023
     Description: Palindrome App for Week 2
@@ -32,20 +32,26 @@
 
             <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
             
+            <!-- Break in page-->
+
             <br>
             
             <!-- Heading of section -->
 
             <h1 class="app-header">Welcome to the Palindrome App!</h1>
             
+            <!-- Opening of divs-->
+
             <div id="assign-container">
-                
-                <!-- Opening of divs-->
 
                 <div class="card">
                     
+                    <!-- Opening of divs with title-->
+
                     <div class="card-title">Palindrome Checker</div>
                         
+                        <!-- Opening of divs-->
+
                         <div class=card-content> 
 
                             <div class="form">
@@ -58,35 +64,58 @@
                                     <input type="text" class="input" id="txtPhrase" name="txtPhrase">
                                 </div>
 
+                                <!-- Button to start function-->
+
                                 <div class="form-field">
                                     <button class="form-field" id="btnCheckPhrase" onclick="showResults()">Check Phrase</button>
                                 </div>
 
                                 <!-- Closing of code -->
+
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Button for return-->
+
+                    <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+                <!-- Closing of code -->
+
                 </div>
-                <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
             </div>
-            <br>
+
+                <!-- Break in page -->
+
+                <br>
+
+                <!-- Opening of divs -->
 
             <div class="card">
+
+                <!-- Opening for div with title -->
 
                 <div class="card-title">Palindrome Checker</div>
                     
                     <div class=card-content> 
 
                         <div class="form">
-                            <div id="assign-results-header"></div>
-                            <div id="assign-results" class="assign-results-text"></div>
+
+                            <div class="form-field">
+
+                                <!-- Return placement for code -->
+
+                                <div id="assign-results-header"></div>
+                                <div id="assign-results" class="assign-results-text"></div>
+
+                                <!-- Closing of code -->
+                            </div>
+
                         </div>
                     </div>
+
                 </div>
-            </div>
-            <script src="berryhill-palindrome.js"></script>            
-        </div>
-        
+
         <script>
 
             //Set default theme to light
@@ -128,5 +157,11 @@
 
             // Closing of code 
         </script>
+
+        <!-- Linking JavaScript to code -->
+
+        <script src="berryhill-palindrome.js"></script>
+
+    <!-- Closing of code -->   
     </body>
 </html>
