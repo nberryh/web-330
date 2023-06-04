@@ -5,16 +5,29 @@
     Description: css files for week 2
 */
 
+/** 
+Color and background color for h1
+*/ 
+
 h1 {
     border: none;
-    background-color: none;
+    background: none;
     color: black;
 }
 
+/** 
+Text align and font size for card title
+*/ 
+
 .card-title {
     text-align: center;
-    font-size: large;
+    font-size: 20px;
+    font-weight: bold;
 }
+
+/** 
+Text align and margin for card
+*/ 
 
 .card{
     margin: auto;
@@ -22,10 +35,36 @@ h1 {
     width: 90%;
 }
 
+/** 
+Width for form field
+*/
+
+.form-field {
+    width: 100%;
+}
+
+/** 
+Color and background color for btnCheckPhrase
+*/ 
+
 #btnCheckPhrase  {
     background-color: #4F3674;
+    color: white;
 }
+
+/** 
+Align text for assign results header
+*/ 
 
 #assign-results-header{
     text-align: left;
+}
+
+/** 
+Width and height for assign results text
+*/ 
+
+.assign-results-text  {
+    width: 100%;
+    height: 100px;
 }
