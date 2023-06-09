@@ -1,0 +1,253 @@
+<!--
+    Title: berryhill-restaurant.html
+    Author: Nolan Berryhill
+    Date: 06/11/2023
+    Description: Restaurant App for Week 3
+-->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- head of index.html -->
+
+    <head>
+        <title>WEB 330 - Enterprise JavaScript II</title>
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="restaurant.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="theme.js"></script>
+    </head>
+
+    <!-- Body of index.html -->
+
+    <body class="light-theme">
+        
+        <div id="container">
+
+            <!-- Button to switch themes-->
+
+            <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <!-- Break in page-->
+
+            <br>
+            
+            <!-- Heading of section -->
+
+            <h1 class="app-header">Welcome to the Restaurant App!</h1>
+            
+            <!-- Opening of divs-->
+
+                <div class="card">
+                    
+                    <!-- Opening of divs with title-->
+
+                    <div class="card-title">Restaurant Menu</div>
+                </div>
+
+                <div id="'section-container">
+                
+                    <!-- Opening of divs with title-->
+
+                    <div class="beverages-section">
+
+                        <div class="card">
+                        
+                        <!-- Opening of divs-->
+
+                            <div class=card-title>Beverages</div> 
+
+                            <div class="card-content">
+
+                                <label>
+                                    <input type="checkbox" name="Soda" value="3.30"> Soda ($3.30)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Sweet Tea" value="3.30"> Sweet Tea ($3.30)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Iced Coffee" value="2.49"> Iced Coffee ($2.49)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Bottle Water" value="2.15"> Bottle Water ($2.15)
+                                </label><br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="appetizers-section">
+
+                        <div class="card">
+                        
+                        <!-- Opening of divs-->
+
+                            <div class=card-title>Appetizers</div> 
+
+                            <div class="card-content">
+
+                                <label>
+                                    <input type="checkbox" name="Nachos" value="6.60"> Nachos ($6.60)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Chips and Salsa" value="5.50"> Chips and Salsa ($5.50)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Pretzel with Cheese" value="8.80"> Pretzel with Cheese ($8.80)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Fried Pickles" value="8.25"> Fried Pickles ($8.25)
+                                </label><br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="main-courses-section">
+
+                        <div class="card">
+                        
+                        <!-- Opening of divs-->
+
+                            <div class=card-title>Main Courses</div> 
+
+                            <div class="card-content">
+
+                                <label>
+                                    <input type="checkbox" name="Street Tacos" value="9.70"> Street Tacos ($9.70)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Boneless Wings" value="12.80"> Boneless Wings ($12.80)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Cheese Burger with Fries" value="12.65"> Cheese Burger with Fries ($12.65)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Chicken Wrap with Salad" value="9.65"> Chicken Wrap with Salad ($9.65)
+                                </label><br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="desserts-section">
+
+                        <div class="card">
+                        
+                        <!-- Opening of divs-->
+
+                            <div class=card-title>Desserts</div> 
+
+                            <div class="card-content">
+
+                                <label>
+                                    <input type="checkbox" name="Ice Cream" value="4.30"> Ice Cream ($4.30)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Chocolate Cake" value="5.40"> Chocolate Cake (5.40)
+                                </label><br />
+                                <label>
+                                    <input type="checkbox" name="Apple Pie" value="3.80"> Apple Pie (3.80)
+                                </label><br />
+                                <label>
+                                    <button id="btnOrder">Place Order</button><br />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                    
+                    <!-- Button for return-->
+
+                    <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+                <!-- Break in page -->
+
+                <br>
+
+                <!-- Opening of divs -->
+
+            <div class="card">
+
+                <!-- Opening for div with title -->
+
+                <div class="card-title">Order Summary</div>
+                    
+                    <div class=card-content id="order-total">
+                        
+                        <p class="assign-results-text"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+                        <div class="form">
+
+                            <div class="form-field">
+
+                                <!-- Return placement for code -->
+
+                                <div id="assign-results-header"></div>
+                                <div id="assign-results" class="assign-results-text"></div>
+
+                                <!-- Closing of code -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+        <script>
+
+            //Set default theme to light
+            setDefaultTheme();
+
+            //Set function layout
+            function toggleMode(x) {
+
+                //Assigns variables
+                let colorTheme = document.body.classList;
+                let iconMode = x.classList;
+
+                //Assigns string actions
+                if (colorTheme.value === "light-theme") {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "dark-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-on");
+                    localStorage.setItem("iconText", "Dark Mode");
+                } else {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "light-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-off");
+                    localStorage.setItem("iconText", "Light Mode");
+                }
+
+                //Assigns output to HTML
+                colorTheme.value = localStorage.getItem("mode");
+                iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            }
+
+            //Function for clearLocalStorage
+            function clearLocalStorage() {
+                localStorage.clear();
+                document.body.classList.value = "light-theme";
+                document.getElementById("icon-text").innerHTML = "Light Mode";
+                document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+            }
+
+            // Closing of code 
+        </script>
+
+        <!-- Linking JavaScript to code -->
+
+        <script src="index.js"></script>
+
+    <!-- Closing of code -->   
+    </body>
+</html>

@@ -1,0 +1,129 @@
+/**
+    Title: site.css
+    Author: Nolan Berryhill
+    Date: 11 June 2023
+    Description: Site.css files for WEB-330
+*/
+
+/** 
+Color and text decoration for return-home
+*/
+
+.return-home {
+    color: #4F3674;
+    text-decoration: none;
+}
+
+/** 
+Color and background color for return-home:hover
+*/ 
+
+.return-home:hover {
+    background: #D6A800;
+    color: #4F3674;
+}
+
+/** 
+Color for return-home:visited
+*/
+
+.return-home:visited {
+    color: #3c275a;
+}
+
+/** 
+Display  and style for form
+*/
+
+.form {
+    display: inline-grid;
+    grid-template-columns: auto;
+}
+
+/** 
+Padding for form-field
+*/
+
+.form-field {
+    padding: 20px;
+
+}
+
+/** 
+Width for full-width
+*/
+
+.full-width {
+    width: 100%;
+}
+
+/** 
+Text, font style, bottom margin for app-header
+*/
+
+.app-header {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/** 
+Margin for container
+*/
+
+#container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+/** 
+cursor type for icon-mode
+*/
+
+#icon-mode:hover {
+    cursor: pointer;
+}
+
+/** 
+Padding for icon-text
+*/
+
+#icon-text {
+    padding-left: 10px;
+}
+
+/** 
+Float for pull
+*/
+
+.pull-right {
+    float: right;
+}
+
+/** 
+Padding for assign-container
+*/
+
+.assign-container {
+    padding: 10px;
+}
+
+/** 
+Width and margin for assign-content
+*/
+
+.assign-content {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+/** 
+Align and font size for assign-results
+*/
+
+.assign-results-text {
+    text-align: center;
+    font-size: 28px;
+}

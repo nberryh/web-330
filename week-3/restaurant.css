@@ -1,0 +1,5 @@
+#section-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid: 20px;
+}
