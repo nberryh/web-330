@@ -9,7 +9,7 @@
 
 // Imports functions from Product
 
-import { Product } from './products.js'
+import { Product } from './product.js'
 
 // Function for Dessert
 export class Dessert extends Product {

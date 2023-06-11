@@ -7,18 +7,30 @@
 ;==========================================
 */
 
-// Export information from the below
-export { Product } from './product.js';
-export { Beverage } from './beverage.js';
-export { Appetizer } from './appetizer.js';
-export { MainCourse } from './main-course.js';
-export { Dessert } from './dessert.js';
-export { Bill } from './bill.js';
+// Import information from the below
+import { Beverage } from './beverage.js';
+import { Appetizer } from './appetizer.js';
+import { MainCourse } from './main-course.js';
+import { Dessert } from './dessert.js';
+import { Bill } from './bill.js';
 
-document.getElementById('btnOrder').addEventListener('click', () => {
+// Export information from the below
+export { Beverage };
+export { Appetizer };
+export { MainCourse };
+export { Dessert };
+export { Bill };
+
+// Import information to created a function
+document.getElementById('btnOrder').onclick = function() {
+    
+    // Give a variable a value
     const bill = new Bill();
 
+    // Give a variable a value
     const beverageInputs = document.querySelectorAll('.beverages-section input[type="checkbox"]');
+    
+    // Creating function
     for (const input of beverageInputs) {
         if(input.checked) {
             const name = input.name;
@@ -28,7 +40,10 @@ document.getElementById('btnOrder').addEventListener('click', () => {
         }
     }
 
+    // Give a variable a value
     const appetizerInputs = document.querySelectorAll('.appetizers-section input[type="checkbox"]');
+
+    // Creating function
     for (const input of appetizerInputs) {
         if (input.checked) {
             const name = input.name;
@@ -38,7 +53,10 @@ document.getElementById('btnOrder').addEventListener('click', () => {
         }
     }
 
+    // Give a variable a value
     const mainCourseInputs = document.querySelectorAll('.main-courses-section input[type="checkbox"]');
+
+    // Creating function
     for (const input of mainCourseInputs) {
         if (input.checked) {
             const name = input.name;
@@ -48,7 +66,10 @@ document.getElementById('btnOrder').addEventListener('click', () => {
         }
     }
 
-    const dessertInputs = document.querySelectorAll('.dessert-section input[type="checkbox"]');
+    // Give a variable a value
+    const dessertInputs = document.querySelectorAll('.desserts-section input[type="checkbox"]');
+
+    // Creating function
     for (const input of dessertInputs) {
         if (input.checked) {
             const name = input.name;
@@ -58,8 +79,8 @@ document.getElementById('btnOrder').addEventListener('click', () => {
         }
     }
 
+    // Give a variable a value
     const orderTotalDiv = document.getElementById('order-total');
-    const total = bill.getTotal().toFixed(2);
-    console.log('Order Total:', total);
+    const total = bill.getTotal();
     orderTotalDiv.textContent = `Your order total is $${total}`;
-});
+};

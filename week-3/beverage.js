@@ -12,7 +12,7 @@ import { Product } from './product.js';
 
 // Function for Beverage
 export class Beverage extends Product {
-    constructor(name, product) {
-        super(name, product)
+    constructor(name, price) {
+        super(name, price);
     }
 }

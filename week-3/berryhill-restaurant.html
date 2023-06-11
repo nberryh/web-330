@@ -49,7 +49,7 @@
                     <div class="card-title">Restaurant Menu</div>
                 </div>
 
-                <div id="'section-container">
+                <div id="section-container">
                 
                     <!-- Opening of divs with title-->
 
@@ -65,16 +65,16 @@
 
                                 <label>
                                     <input type="checkbox" name="Soda" value="3.30"> Soda ($3.30)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Sweet Tea" value="3.30"> Sweet Tea ($3.30)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Iced Coffee" value="2.49"> Iced Coffee ($2.49)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Bottle Water" value="2.15"> Bottle Water ($2.15)
-                                </label><br />
+                                </label><br>
                             </div>
                         </div>
                     </div>
@@ -91,16 +91,16 @@
 
                                 <label>
                                     <input type="checkbox" name="Nachos" value="6.60"> Nachos ($6.60)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Chips and Salsa" value="5.50"> Chips and Salsa ($5.50)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Pretzel with Cheese" value="8.80"> Pretzel with Cheese ($8.80)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Fried Pickles" value="8.25"> Fried Pickles ($8.25)
-                                </label><br />
+                                </label><br>
                             </div>
                         </div>
                     </div>
@@ -117,16 +117,16 @@
 
                                 <label>
                                     <input type="checkbox" name="Street Tacos" value="9.70"> Street Tacos ($9.70)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Boneless Wings" value="12.80"> Boneless Wings ($12.80)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Cheese Burger with Fries" value="12.65"> Cheese Burger with Fries ($12.65)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Chicken Wrap with Salad" value="9.65"> Chicken Wrap with Salad ($9.65)
-                                </label><br />
+                                </label><br>
                             </div>
                         </div>
                     </div>
@@ -143,15 +143,15 @@
 
                                 <label>
                                     <input type="checkbox" name="Ice Cream" value="4.30"> Ice Cream ($4.30)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Chocolate Cake" value="5.40"> Chocolate Cake (5.40)
-                                </label><br />
+                                </label><br>
                                 <label>
                                     <input type="checkbox" name="Apple Pie" value="3.80"> Apple Pie (3.80)
-                                </label><br />
+                                </label><br>
                                 <label>
-                                    <button id="btnOrder">Place Order</button><br />
+                                    <button id="btnOrder" onclick="btnOrder" class="btn btn-primary">Place Order</button>
                                 </label>
                             </div>
                         </div>
@@ -175,9 +175,9 @@
 
                 <div class="card-title">Order Summary</div>
                     
-                    <div class=card-content id="order-total">
+                    <div class=card-content>
                         
-                        <p class="assign-results-text"></p>
+                        <div id="order-total" class="assign-results-text"></div>
 
                     </div>
 
@@ -185,19 +185,17 @@
 
             </div>
 
-                        <div class="form">
+                <div class="form">
 
-                            <div class="form-field">
+                    <div class="form-field">
 
-                                <!-- Return placement for code -->
+                        <!-- Return placement for code -->
 
-                                <div id="assign-results-header"></div>
-                                <div id="assign-results" class="assign-results-text"></div>
+                            <div id="assign-results-header"></div>
+                            <div id="assign-results" class="assign-results-text"></div>
 
                                 <!-- Closing of code -->
-                            </div>
 
-                        </div>
                     </div>
 
                 </div>
@@ -246,7 +244,7 @@
 
         <!-- Linking JavaScript to code -->
 
-        <script src="index.js"></script>
+        <script type="module" src="index.js"></script>
 
     <!-- Closing of code -->   
     </body>

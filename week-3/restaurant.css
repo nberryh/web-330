@@ -1,5 +1,53 @@
+/**
+    Title: restaurant.css
+    Author: Nolan Berryhill
+    Date: 11 June 2023
+    Description: Css for html
+*/
+
+/** 
+Grid layout
+*/
+
 #section-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid: 20px;
+    grid-template-rows: 1fr 1 fr;
+    grid-gap: 10px;
+    margin: 10px;
+}
+
+/** 
+Text, font style, bottom margin for app-header
+*/
+
+.app-header {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+    background-color: initial;
+    border: none;
+}
+
+/** 
+Text alignment and size of font for card-title
+*/
+
+.card-title {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/** 
+Text align and font style for card-content
+*/
+
+.card-content {
+    align-items: flex-start;
+    text-align: center;
+    font-size: large;
+    font-weight: 400;
 }

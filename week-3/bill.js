@@ -7,30 +7,36 @@
 ;==========================================
 */
 
+// Export information
 export class Bill {
     constructor() {
         this._beverages = [];
         this._appetizers = [];
-        this._mainCourse = [];
+        this._mainCourses = [];
         this._desserts = [];
     }
 
+    // Function for beverage
     addBeverage(beverage) {
         this._beverages.push(beverage);
     }
 
+    // Function for appetizer
     addAppetizer(appetizer) {
         this._appetizers.push(appetizer);
     }
 
+    // Function for main course
     addMainCourse(mainCourse) {
         this._mainCourses.push(mainCourse);
     }
 
+    // Function for dessert
     addDessert(dessert) {
-        this._desserts.push(dessert)
+        this._desserts.push(dessert);
     }
 
+    // Function for getTotal
     getTotal() {
         let total = 0;
         [this._beverages, this._appetizers, this._mainCourses, this._desserts].forEach((arr) => {
