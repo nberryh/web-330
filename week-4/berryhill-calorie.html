@@ -1,0 +1,127 @@
+<!--
+    Title: berryhill-calorie.html
+    Author: Nolan Berryhill
+    Date: 06/18/2023
+    Description: Calorie App for Week 3
+-->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- head of index.html -->
+
+    <head>
+        <title>WEB 330 - Enterprise JavaScript II</title>
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-calorie.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="theme.js"></script>
+    </head>
+
+    <!-- Body of index.html -->
+
+    <body class="light-theme">
+        
+        <div id="container">
+
+            <!-- Button to switch themes-->
+
+            <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <!-- Break in page-->
+
+            <br>
+            
+            <!-- Heading of section -->
+
+            <h1 class="app-header">Welcome to the Calorie App!</h1>
+            
+            <!-- Opening of divs-->
+
+            <div id="assign-container">
+
+                <div class="card">
+                    
+                    <!-- Opening of divs with title-->
+
+                    <div class="card-title">Calorie Search Form</div>
+
+                    <div class="form-field">Enter a food item:</div>
+
+                    <input type="text" id="txtFoodItem">
+
+                    <button id="btnSearch" class="btn btn-primary">Search</button>
+
+                </div>
+
+                <!-- Button for return-->
+
+                <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+                <!-- Break in page -->
+                    
+                <br>
+
+                <div class="card">
+
+                    <div class="card-title">Search Results</div>
+
+                    <span id="foodList"></span>
+
+                </div>
+            
+            </div>
+                        
+        <script>
+
+            //Set default theme to light
+            setDefaultTheme();
+
+            //Set function layout
+            function toggleMode(x) {
+
+                //Assigns variables
+                let colorTheme = document.body.classList;
+                let iconMode = x.classList;
+
+                //Assigns string actions
+                if (colorTheme.value === "light-theme") {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "dark-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-on");
+                    localStorage.setItem("iconText", "Dark Mode");
+                } else {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "light-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-off");
+                    localStorage.setItem("iconText", "Light Mode");
+                }
+
+                //Assigns output to HTML
+                colorTheme.value = localStorage.getItem("mode");
+                iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            }
+
+            //Function for clearLocalStorage
+            function clearLocalStorage() {
+                localStorage.clear();
+                document.body.classList.value = "light-theme";
+                document.getElementById("icon-text").innerHTML = "Light Mode";
+                document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+            }
+
+            // Closing of code 
+        </script>
+
+        <!-- Linking JavaScript to code -->
+
+        <script src="calorie-convert.js" type="module"></script>
+
+    <!-- Closing of code -->   
+    </body>
+</html>

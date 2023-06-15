@@ -1,0 +1,17 @@
+/**
+    Title: berryhill-calorie.css
+    Author: Nolan Berryhill
+    Date: 18 June 2023
+    Description: CSS for the HTML
+*/
+
+/** 
+ID selector for #foodList
+*/
+
+#foodList {
+    float: right;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
