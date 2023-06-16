@@ -33,6 +33,8 @@ const txtFoodItemE1 = document.getElementById('txtFoodItem');
 const btnSearch = document.getElementById('btnSearch');
 const foodList = document.getElementById('foodList');
 
+const selectedFoods = [];
+
 // Register an onclick event for the btnSearch button
 btnSearch.onclick = function() {
     // Get the value from the input field
@@ -41,21 +43,31 @@ btnSearch.onclick = function() {
     // Call the find function from the CalorieConverter class
     const foods = CalorieConverter.find(foodItem);
 
+    selectedFoods.push(...foods);
+
+    const foodListData = generateFoodTable(selectedFoods);
+
+    foodList.innerHTML = foodListData;
+
+};
+
     // Build the HTML string for the food list
-    let foodListData = '<table class="food-table>';
-    foodListData += '<tr>';
-    foodListData += '<th>Name</th>';
-    foodListData += '<th>Calories</th>';
-    foodListData += '</tr>';
+function generateFoodTable(foods) {
+    let foodListData = '<table>';
+    foodListData += '<tr><th>Name</th><th>Calories</th></tr>';
+
+    let count = 0;
+
     for (const food of foods) {
         foodListData += '<tr>';
-        foodListData += `<td class="food-name">${food.name}</td>`;
-        foodListData += `<td class="food-calories">${food.calories}</td>`;
+        foodListData += `<td>${food.name}</td>`;
+        foodListData += `<td>${food.calories}</td>`;
         foodListData += '</tr>';
     }
+
     foodListData += '</table>';
 
     // Update the foodList element with the HTML string
-    foodList.innerHTML = foodListData;
+    return foodListData;
 };
 

@@ -211,3 +211,34 @@ h2, h3, h4 {
   border: solid 1px;
   border-color: var(--heading-border-color);
 }
+
+/** 
+Styles for table
+*/
+
+table {
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+/** 
+Styles for table tr
+*/
+
+table tr{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--table-header-background-color);
+    color: var(--table-header-color);
+}
+
+/** 
+Styles for table td
+*/
+
+table td{
+    border: 1px solid var(--table-border-color);
+    padding: 8px;
+    text-align: center;
+}
