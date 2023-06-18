@@ -69,18 +69,18 @@ Text align and font style for card-content
 #foodList {
     margin: 0 auto;
     width: 60%;
-    text-align: center;
+    position: relative;
 }
 
 #foodList table {
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
-    position: static;
 }
 
 #foodList td {
     border: 1px solid #ccc;
     padding: 8px;
+    width: 25%;
     text-align: center;
     background-color: white;
     color: black;
