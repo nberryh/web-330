@@ -80,7 +80,6 @@ Text align and font style for card-content
 #foodList td {
     border: 1px solid #ccc;
     padding: 8px;
-    width: 25%;
     text-align: center;
     background-color: white;
     color: black;
