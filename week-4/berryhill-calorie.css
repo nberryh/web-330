@@ -92,3 +92,8 @@ Text align and font style for card-content
     background-color: #4f3674;
     font-weight: bold;
 }
+
+.allFood {
+    font-style: italic;
+    color: red;
+}

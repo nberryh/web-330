@@ -56,8 +56,6 @@ function generateFoodTable(foods) {
     let foodListData = '<table>';
     foodListData += '<tr><th>Name</th><th>Calories</th></tr>';
 
-    let count = 0;
-
     for (const food of foods) {
         foodListData += '<tr>';
         foodListData += `<td>${food.name}</td>`;
