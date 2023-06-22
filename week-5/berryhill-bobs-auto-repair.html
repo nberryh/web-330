@@ -1,0 +1,196 @@
+<!--
+    Title: berryhill-bobs-auto-repair.html
+    Author: Nolan Berryhill
+    Date: 06/25/2023
+    Description: Calorie App for Week 3
+-->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- head of index.html -->
+
+    <head>
+        <title>WEB 330 - Enterprise JavaScript II</title>
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-calorie.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="theme.js"></script>
+    </head>
+
+    <!-- Body of index.html -->
+
+    <body class="light-theme">
+        
+        <div id="container">
+
+            <!-- Button to switch themes-->
+
+            <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <!-- Break in page-->
+
+            <br>
+            
+            <!-- Heading of section -->
+
+            <h1 class="app-header">Welcome to the Bob's Automotive Repair Shop!</h1>
+            
+            <!-- Opening of divs-->
+
+            <div id="assign-container">
+
+                <div class="card">
+                    
+                    <!-- Opening of divs with title-->
+
+                    <div class="card-title">Product Listing</div>
+
+                    <cart-component></cart-component>
+
+                    <div class="form-field">Choose a product:</div>
+
+                    <div class="form-field">
+
+                        <select id="productList" class="drop-down-menu">
+
+                            <option value="">--Select--</option>
+                            <option value="19.99">Oil Change</option>
+                            <option value="18.44">Filter Replacement</option>
+                            <option value="9.99">Wiper fluid Refill</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <button id="btnAddProduct">Add Product</button>
+                    </div>
+                    <!-- Button for return-->
+
+                    <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+                    <!-- Break in page -->
+                    
+                    <br>
+                    <!-- Closing of code --> 
+
+                    <div class="card-title">Shopping Cart</div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shopping-cart"></tbody>
+                    </table>
+
+                </div>
+           
+            </div>
+
+        </div>
+                        
+        <script>
+
+            //Set default theme to light
+            setDefaultTheme();
+
+            //Set function layout
+            function toggleMode(x) {
+
+                //Assigns variables
+                let colorTheme = document.body.classList;
+                let iconMode = x.classList;
+
+                //Assigns string actions
+                if (colorTheme.value === "light-theme") {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "dark-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-on");
+                    localStorage.setItem("iconText", "Dark Mode");
+                } else {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "light-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-off");
+                    localStorage.setItem("iconText", "Light Mode");
+                }
+
+                //Assigns output to HTML
+                colorTheme.value = localStorage.getItem("mode");
+                iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            }
+
+            //Function for clearLocalStorage
+            function clearLocalStorage() {
+                localStorage.clear();
+                document.body.classList.value = "light-theme";
+                document.getElementById("icon-text").innerHTML = "Light Mode";
+                document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+            }
+
+            // Closing of code 
+        </script>
+
+        <!-- Linking JavaScript to code -->
+
+        <script src="product.js" type="module"></script>
+        <script src="shopping-cart.js" type="module"></script>
+
+        <script>
+
+            import { Product } from './product.js';
+            import { ShoppingCart } from './shopping-cart.js';
+
+            const shoppingCart = new ShoppingCart();
+
+            setCartCount();
+
+            const btnAddProduct = document.getElementById('btnAddProduct');
+            btnAddProduct.onclick = function() {
+                const productList = document.getElementById('productList');
+                const product = productList.options[productList.selectedIndex].text;
+                const productValue = productList.options[productList.selectedIndex].value;
+
+                if (product !== '--Select--') {
+                    shoppingCart.add(new Product(product, parseFloat(productValue)));
+                    setCartCount();
+                    alert(`${product} was added to your shopping cart!`);
+                    productList.value = 'select';
+                }
+            };
+
+            const iconMode = document.getElementById('icon-mode');
+            iconMode.onclick = function() {
+                let cartDisplayTable = '<table>';
+                cartDisplayTable += '<tr><th>Name</th><th>Price</th></tr>';
+
+                for (const product of shoppingCart) {
+                    cartDisplayTable += '<tr>';
+                    cartDisplayTable += '<td>${product.name}</td>';
+                    cartDisplayTable += '<td>${product.price}</td>';
+                    cartDisplayTable += '</tr>';
+                }
+
+                cartDisplayTable += '</table>';
+
+                const shoppingCartDiv = document.getElementById('shopping-cart');
+                shoppingCartDiv.innerHTML = cartDisplayTable;
+            };
+
+            function setCartCount() {
+                const cartCountDiv = document.getElementById('cart-count');
+                const count = shoppingCart.count();
+                cartCountDiv.innerHTML = count;
+            }
+        </script>
+
+    <!-- Closing of code -->   
+    </body>
+</html>

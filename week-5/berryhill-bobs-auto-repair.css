@@ -1,0 +1,18 @@
+/**
+    Title: berryhill-bobs-auto-repair.css
+    Author: Nolan Berryhill
+    Date: 25 June 2023
+    Description: CSS for the HTML
+*/
+
+#cart-message {
+    float: right;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+i:hover {
+    cursor: pointer;
+    pointer-events: auto;
+}
