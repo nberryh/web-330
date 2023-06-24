@@ -13,7 +13,8 @@ class CartComponent extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = '<i class="fa fa-shopping-cart"></i>';
+        this.innerHTML = 
+        `<i id="cartIcon" class="fa fa-shopping-cart"></i> (<span id="cart-count"></span>)`;
     }
 }
 

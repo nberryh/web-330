@@ -13,16 +13,19 @@
     <!-- head of index.html -->
 
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WEB 330 - Enterprise JavaScript II</title>
         <link href="site.css" type="text/css" rel="stylesheet">
         <link href="theme.css" type="text/css" rel="stylesheet">
-        <link href="berryhill-calorie.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-bobs-auto-repair.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="theme.js"></script>
     </head>
 
     <!-- Body of index.html -->
+
+    <script src="cart-component.js" type="module"></script>
 
     <body class="light-theme">
         
@@ -52,12 +55,11 @@
 
                     <cart-component></cart-component>
 
-                    <div class="form-field">Choose a product:</div>
-
                     <div class="form-field">
 
-                        <select id="productList" class="drop-down-menu">
-
+                        
+                        <label for="productList">Choose a product:</label>
+                        <select name="productList" id="productList" class="drop-down-menu">
                             <option value="">--Select--</option>
                             <option value="19.99">Oil Change</option>
                             <option value="18.44">Filter Replacement</option>
@@ -66,10 +68,14 @@
 
                     </div>
 
+                    <i id="cart-message">To view your shopping cart click on the cart icon</i>
+
                     <div>
-                        <button id="btnAddProduct">Add Product</button>
+                        <button class="btn btn-primary" id="btnAddProduct">Add to Cart</button>
                     </div>
                     <!-- Button for return-->
+
+                </div>
 
                     <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
 
@@ -78,17 +84,17 @@
                     <br>
                     <!-- Closing of code --> 
 
+                <div class="card">
+
                     <div class="card-title">Shopping Cart</div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody id="shopping-cart"></tbody>
-                    </table>
+                        <div class="form-field">
+                    
+                            <div id="shoppingCart"></div>
+                        
+                        </div>
+                    
+                    </div>
 
                 </div>
            
@@ -140,47 +146,43 @@
 
         <!-- Linking JavaScript to code -->
 
-        <script src="product.js" type="module"></script>
-        <script src="shopping-cart.js" type="module"></script>
 
-        <script>
+        <script type="module">
 
             import { Product } from './product.js';
             import { ShoppingCart } from './shopping-cart.js';
 
             const shoppingCart = new ShoppingCart();
 
-            setCartCount();
+            setCartCount;
 
-            const btnAddProduct = document.getElementById('btnAddProduct');
-            btnAddProduct.onclick = function() {
-                const productList = document.getElementById('productList');
+            document.getElementById("btnAddProduct").onclick = function() {
+                
+                const productList = document.getElementById("productList");
                 const product = productList.options[productList.selectedIndex].text;
                 const productValue = productList.options[productList.selectedIndex].value;
 
-                if (product !== '--Select--') {
+                if (product !== "--Select--") {
                     shoppingCart.add(new Product(product, parseFloat(productValue)));
                     setCartCount();
                     alert(`${product} was added to your shopping cart!`);
-                    productList.value = 'select';
                 }
             };
 
-            const iconMode = document.getElementById('icon-mode');
-            iconMode.onclick = function() {
+            document.getElementById('cartIcon').onclick = function() {
                 let cartDisplayTable = '<table>';
                 cartDisplayTable += '<tr><th>Name</th><th>Price</th></tr>';
 
                 for (const product of shoppingCart) {
                     cartDisplayTable += '<tr>';
-                    cartDisplayTable += '<td>${product.name}</td>';
-                    cartDisplayTable += '<td>${product.price}</td>';
+                    cartDisplayTable += `<td>${product.name}</td>`;
+                    cartDisplayTable += `<td>${product.price}</td>`;
                     cartDisplayTable += '</tr>';
                 }
 
                 cartDisplayTable += '</table>';
 
-                const shoppingCartDiv = document.getElementById('shopping-cart');
+                const shoppingCartDiv = document.getElementById('shoppingCart');
                 shoppingCartDiv.innerHTML = cartDisplayTable;
             };
 
@@ -189,6 +191,7 @@
                 const count = shoppingCart.count();
                 cartCountDiv.innerHTML = count;
             }
+
         </script>
 
     <!-- Closing of code -->   

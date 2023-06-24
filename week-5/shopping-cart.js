@@ -9,7 +9,7 @@
 
 class ShoppingCart {
     constructor() {
-        this.product = [];
+        this.products = [];
     }
 
     count() {
@@ -21,7 +21,7 @@ class ShoppingCart {
     }
 
     *[Symbol.iterator]() {
-        for (const product of this.products) {
+        for (let product of this.products) {
             yield product;
         }
     }
