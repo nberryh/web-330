@@ -7,19 +7,23 @@
 ;==========================================
 */
 
+//Define the Shopping Cart class
 class ShoppingCart {
     constructor() {
         this.products = [];
     }
 
+    //Define the class()
     count() {
         return this.products.length;
     }
 
+    //Define how to add product
     add(product) {
         this.products.push(product);
     }
 
+    //Define symbol iterator
     *[Symbol.iterator]() {
         for (let product of this.products) {
             yield product;
@@ -27,4 +31,5 @@ class ShoppingCart {
     }
 }
 
+//Export ShoppingCart
 export { ShoppingCart };

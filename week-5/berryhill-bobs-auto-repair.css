@@ -24,32 +24,47 @@ i:hover {
     pointer-events: auto;
 }
 
+/**
+Text style for card
+*/
+
 .card {
     text-align: center;
 }
+
+/**
+Text style for card title
+*/
 
 .card-title {
     text-align: center;
     font-size: xx-large;
     font-weight: bold;
 }
+
 /**
-color, font style for cart-component
+color, font style for cart icon
 */
+
 #cartIcon {
     color: #4f3674;
     text-align: center;
     font-size: xx-large;
 }
 
+/**
+color, font style for cart-count
+*/
+
 #cart-count {
     color: #4f3674;
     text-align: center;
     font-size: xx-large;
 }
-.form-field {
-    text-align: center;
-}
+
+/**
+color, font style for shopping cart table
+*/
 
 #shoppingCart table {
     width: 50%;
@@ -70,4 +85,12 @@ color, font style for cart-component
     text-align: center;
     background-color: #4f3674;
     font-weight: bold;
+}
+
+/**
+font style for form field
+*/
+
+.form-field {
+    text-align: center;
 }

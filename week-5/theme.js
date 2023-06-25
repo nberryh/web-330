@@ -2,7 +2,7 @@
 ===========================================
 ; Title:  theme.js
 ; Author: Nolan Berryhill
-; Date:   28 May 2023
+; Date:   25 June 2023
 ; Description: Applying strings to list in html
 ;==========================================
 */

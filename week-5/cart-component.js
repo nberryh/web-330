@@ -7,6 +7,7 @@
 ;==========================================
 */
 
+//Define the CartComponent class
 class CartComponent extends HTMLElement {
     constructor() {
         super();
@@ -18,4 +19,5 @@ class CartComponent extends HTMLElement {
     }
 }
 
+//Export component
 customElements.define('cart-component', CartComponent);

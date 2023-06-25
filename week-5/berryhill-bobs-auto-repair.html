@@ -25,8 +25,6 @@
 
     <!-- Body of index.html -->
 
-    <script src="cart-component.js" type="module"></script>
-
     <body class="light-theme">
         
         <div id="container">
@@ -53,10 +51,13 @@
 
                     <div class="card-title">Product Listing</div>
 
+                    <!-- Get code for shopping cart -->
+
                     <cart-component id="cart-component"></cart-component>
 
                     <div class="form-field">
 
+                        <!-- Label and options for cart items -->
                         
                         <label for="productList">Choose a product:</label>
                         <select name="productList" id="productList" class="drop-down-menu">
@@ -68,29 +69,39 @@
 
                     </div>
 
+                    <!-- Directions for selecting options -->
+
                     <i id="cart-message">To view your shopping cart click on the cart icon</i>
+
+                    <!-- Button to start Javascript-->
 
                     <div>
                         <button class="btn btn-primary" id="btnAddProduct">Add to Cart</button>
                     </div>
-                    <!-- Button for return-->
 
                 </div>
 
-                    <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+                <!-- Button for return-->
 
-                    <!-- Break in page -->
+                <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+                <!-- Break in page -->
                     
-                    <br>
-                    <!-- Closing of code --> 
+                <br>
+                
+                <!-- Opening of code --> 
 
                 <div class="card">
+
+                    <!-- Output location --> 
 
                     <div class="card-title">Shopping Cart</div>
 
                         <div class="form-field">
                     
                             <div id="shoppingCart"></div>
+
+                        <!-- Closing of code --> 
                         
                         </div>
                     
@@ -100,7 +111,11 @@
            
             </div>
 
-        </div>
+        <!-- Linking JavaScript to code -->
+
+        <script src="cart-component.js" type="module"></script>
+
+        <!-- Script for JavaScript code -->
                         
         <script>
 
@@ -143,19 +158,20 @@
 
             // Closing of code 
         </script>
-
-        <!-- Linking JavaScript to code -->
-
-
+        
         <script type="module">
 
+            //Import Product and ShoppingCart
             import { Product } from './product.js';
             import { ShoppingCart } from './shopping-cart.js';
 
+            //Make const have value
             const shoppingCart = new ShoppingCart();
 
+            //set cart count
             setCartCount;
 
+            // Build function to add selection
             document.getElementById("btnAddProduct").onclick = function() {
                 
                 const productList = document.getElementById("productList");
@@ -169,6 +185,7 @@
                 }
             };
 
+            // Build the HTML string for the food list
             document.getElementById('cartIcon').onclick = function() {
                 let cartDisplayTable = '<table>';
                 cartDisplayTable += '<tr><th>Name</th><th>Price</th></tr>';
@@ -186,6 +203,7 @@
                 shoppingCartDiv.innerHTML = cartDisplayTable;
             };
 
+            // Build function for setCartCount
             function setCartCount() {
                 const cartCountDiv = document.getElementById('cart-count');
                 const count = shoppingCart.count();
