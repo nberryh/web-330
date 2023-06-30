@@ -1,0 +1,142 @@
+<!--
+    Title: berryhill-future-value.html
+    Author: Nolan Berryhill
+    Date: 07/02/2023
+    Description: Value App for Week 6
+-->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- head of index.html -->
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WEB 330 - Enterprise JavaScript II</title>
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="flex-layout.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-future-value.html" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="theme.js"></script>
+    </head>
+
+    <body class="light-theme">
+        
+        <div id="container">
+
+            <!-- Button to switch themes-->
+
+            <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <!-- Break in page-->
+
+            <br>
+            
+            <!-- Heading of section -->
+
+            <h1 class="app-header">Welcome to the Future Value App!</h1>
+
+            <div class="card">
+                <div class="card-title">Future Value Calculator</div>
+                <div class="row">
+                    <div class="col-12 danger" id="errorLog"></div>
+                </div>
+                <div class="row">
+                    <div class="col-5 form-field form-label">Monthly payment:</div>
+                    <div class="col-7 form-field"><input type="text" id="txtMonthlyPayment"></div>
+                </div>
+                <div class="row">
+                    <div class="col-5 form-field form-label">Interest Rate:</div>
+                    <div class="col-7 form-field"><input type="text" id="txtYearlyRate"></div>
+                    <i class="danger">Enter 11% as 11:1:</i>
+                </div>
+                <div class="row">
+                    <div class="col-5 form-field form-label">Number of Years:</div>
+                    <div class="col-7 form-field">
+                        <select id="listNumOfYears" class="drop-down-menu">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 form-field">
+                    <button id="btnCalculate">Calculate</button>
+                </div>
+            </div>
+        </div>
+
+            <!-- Button for return-->
+
+            <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+            <!-- Break in page -->
+                                    
+            <br>
+
+            <div class="row">
+                <div class="card-title">Calculation as of <span id="today"></span></div>
+                <div class="card-content" id="futureVaalue"></div>
+            </div>
+
+            <script src="berryhill-future-value.js"></script>
+
+            <script>
+
+                //Set default theme to light
+                setDefaultTheme();
+    
+                //Set function layout
+                function toggleMode(x) {
+    
+                    //Assigns variables
+                    let colorTheme = document.body.classList;
+                    let iconMode = x.classList;
+    
+                    //Assigns string actions
+                    if (colorTheme.value === "light-theme") {
+                        localStorage.clear();
+                        localStorage.setItem("mode", "dark-theme");
+                        localStorage.setItem("iconMode", "fa-toggle-on");
+                        localStorage.setItem("iconText", "Dark Mode");
+                    } else {
+                        localStorage.clear();
+                        localStorage.setItem("mode", "light-theme");
+                        localStorage.setItem("iconMode", "fa-toggle-off");
+                        localStorage.setItem("iconText", "Light Mode");
+                    }
+    
+                    //Assigns output to HTML
+                    colorTheme.value = localStorage.getItem("mode");
+                    iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                    document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+                }
+    
+                //Function for clearLocalStorage
+                function clearLocalStorage() {
+                    localStorage.clear();
+                    document.body.classList.value = "light-theme";
+                    document.getElementById("icon-text").innerHTML = "Light Mode";
+                    document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+                }
+    
+                // Closing of code 
+            </script>
+    </body>
+</html>
+            
+            
