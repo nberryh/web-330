@@ -1,0 +1,32 @@
+/**
+    Title: berryhill-future-value.css
+    Author: Nolan Berryhill
+    Date: 02 July 2023
+    Description: CSS for the HTML
+*/
+
+/**
+Text style for card
+*/
+
+.card {
+    text-align: center;
+}
+
+/**
+Text style for card title
+*/
+
+.card-title {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/**
+font style for form field
+*/
+
+.form-field {
+    text-align: center;
+}

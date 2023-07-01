@@ -12,8 +12,8 @@ import { FloatField } from './float-field.js';
 import { FloatMinField } from './float-min-field.js';
 import { FloatMaxField } from './float-max-field.js';
 
-export class FinanceCalculator {
-    static MONTHS_IN_YEAR = 12;
+export class Validator {
+
     validators = [];
     messages = [];
 
@@ -38,6 +38,7 @@ export class FinanceCalculator {
         this.validators.push(new FloatMaxField(this.name, this.field, max));
     }
 
+
     validate() {
         this.messages = [];
 
@@ -51,11 +52,4 @@ export class FinanceCalculator {
         return true;
     }
 
-    static calculateFutureValue(monthlyPayment, rate, years) {
-
-    }
-
-    static convertToCurrency(field) {
-        
-    }
 }

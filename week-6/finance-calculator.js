@@ -24,6 +24,7 @@ export class FinanceCalculator {
             style: 'currency',
             currency: 'USD',
         });
+        
         return currencyFormatter.format(field);
     }
 }

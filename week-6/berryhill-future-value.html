@@ -18,7 +18,7 @@
         <link href="site.css" type="text/css" rel="stylesheet">
         <link href="theme.css" type="text/css" rel="stylesheet">
         <link href="flex-layout.css" type="text/css" rel="stylesheet">
-        <link href="berryhill-future-value.html" type="text/css" rel="stylesheet">
+        <link href="berryhill-future-value.css" type="text/css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="theme.js"></script>
@@ -42,43 +42,46 @@
 
             <div class="card">
                 <div class="card-title">Future Value Calculator</div>
-                <div class="row">
-                    <div class="col-12 danger" id="errorLog"></div>
-                </div>
-                <div class="row">
-                    <div class="col-5 form-field form-label">Monthly payment:</div>
-                    <div class="col-7 form-field"><input type="text" id="txtMonthlyPayment"></div>
-                </div>
-                <div class="row">
-                    <div class="col-5 form-field form-label">Interest Rate:</div>
-                    <div class="col-7 form-field"><input type="text" id="txtYearlyRate"></div>
-                    <i class="danger">Enter 11% as 11:1:</i>
-                </div>
-                <div class="row">
-                    <div class="col-5 form-field form-label">Number of Years:</div>
-                    <div class="col-7 form-field">
-                        <select id="listNumOfYears" class="drop-down-menu">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
+                
+                    <div class="danger" id="errorLog"></div>
+
+                    <div class="form-field">
+
+                        <div class="form-field row">
+                            <label for="txtMonthlyPayment" class="col-5 form-label">Monthly payment:</label>
+                            <input type="text" class="input col-7" id="txtMonthlyPayment">
+                        </div>
+                
+                        <div class="form-field row">
+                            <label class="col-5 form-label" for="txtYearlyRate">Interest Rate:</label>
+                            <input type="text" class="input col-7" id="txtYearlyRate">                    
+                        </div>
+
+                        <div class="instructions">
+                            <i class="danger">Enter 11% as 11:1:</i>
+                        </div>
+
+                        <div class="form-field row">
+                            <label for="listNumOfYears" class="col-5 form-label">Number of Years:</label>
+                            <select id="listNumOfYears" class="drop-down-menu col-3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
             </div>
 
-            <div class="row">
-                <div class="col-12 form-field">
-                    <button id="btnCalculate">Calculate</button>
-                </div>
+            <div>
+                <button class="btn btn-primary" id="btnCalculate">Calculate</button>
             </div>
-        </div>
 
             <!-- Button for return-->
 
@@ -88,54 +91,108 @@
                                     
             <br>
 
-            <div class="row">
+            <div class="card">
                 <div class="card-title">Calculation as of <span id="today"></span></div>
-                <div class="card-content" id="futureVaalue"></div>
+                <div class="form-field futureValues">
+                    
+                    <div class="assign-results-text" id="futureValue"></div>
+                </div>
             </div>
 
-            <script src="berryhill-future-value.js"></script>
+        </div>
 
-            <script>
+        <script type="module">
+            
+            import { FinanceCalculator } from './finance-calculator.js';
+            import { Validator } from './validator.js';
 
-                //Set default theme to light
-                setDefaultTheme();
-    
-                //Set function layout
-                function toggleMode(x) {
-    
-                    //Assigns variables
-                    let colorTheme = document.body.classList;
-                    let iconMode = x.classList;
-    
-                    //Assigns string actions
-                    if (colorTheme.value === "light-theme") {
-                        localStorage.clear();
-                        localStorage.setItem("mode", "dark-theme");
-                        localStorage.setItem("iconMode", "fa-toggle-on");
-                        localStorage.setItem("iconText", "Dark Mode");
-                    } else {
-                        localStorage.clear();
-                        localStorage.setItem("mode", "light-theme");
-                        localStorage.setItem("iconMode", "fa-toggle-off");
-                        localStorage.setItem("iconText", "Light Mode");
+            document.addEventListener('DOMContentLoaded', () => {
+                const todayElement = document.getElementById('today');
+                todayElement.innerHTML = new Date().toLocaleDateString('en-US');
+
+                const calculateButton = document.getElementById('btnCalculate');
+                calculateButton.addEventListener('click', () => {
+                    const monthlyPayment = parseFloat(document.getElementById('txtMonthlyPayment').value);
+                    const rate = parseFloat(document.getElementById('txtYearlyRate').value);
+                    const years = parseInt(document.getElementById('listNumOfYears').value);
+                    const errorLogE1 = document.getElementById('errorLog');
+                    const errorLog = [];
+
+                    const monthlyPaymentValidator = new Validator('Monthly Payment', monthlyPayment);
+                    monthlyPaymentValidator.addRequiredField();
+                    monthlyPaymentValidator.addRequiredFloatField();
+                    monthlyPaymentValidator.addFloatMaxField(100);
+
+                    const rateValidator = new Validator('Interest Rate', rate);
+                    rateValidator.addRequiredField();
+                    rateValidator.addRequiredFloatField();
+                    rateValidator.addFloatMaxField(100);
+
+                    if (!monthlyPaymentValidator.validate()) {
+                        for (const message of monthlyPaymentValidator.messages) {
+                            errorLog.push(message);
+                        }
                     }
+
+                    if (!rateValidator.validate()) {
+                        for (const message of rateValidator.messages) {
+                            errorLog.push(message);
+                        }
+                    }
+
+                    if (monthlyPaymentValidator.validate() && rateValidator.validate()) {
+                        errorLogE1.innerHTML = '';
+                        const futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
+                        document.getElementById('futureValue').innerHTML = `Future Value: ${futureValue}`;           
+                    } else {
+                        errorLogE1.innerHTML = errorLog.map(message => `<li>${message}</li>`).join('');
+                    }
+                });
+            });
+
+        </script>
+
+        <script>
+
+            //Set default theme to light
+            setDefaultTheme();
     
-                    //Assigns output to HTML
-                    colorTheme.value = localStorage.getItem("mode");
-                    iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
-                    document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
-                }
+            //Set function layout
+            function toggleMode(x) {
     
-                //Function for clearLocalStorage
-                function clearLocalStorage() {
+                //Assigns variables
+                let colorTheme = document.body.classList;
+                let iconMode = x.classList;
+    
+                //Assigns string actions
+                if (colorTheme.value === "light-theme") {
                     localStorage.clear();
-                    document.body.classList.value = "light-theme";
-                    document.getElementById("icon-text").innerHTML = "Light Mode";
-                    document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+                    localStorage.setItem("mode", "dark-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-on");
+                    localStorage.setItem("iconText", "Dark Mode");
+                } else {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "light-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-off");
+                    localStorage.setItem("iconText", "Light Mode");
                 }
     
-                // Closing of code 
-            </script>
+                //Assigns output to HTML
+                colorTheme.value = localStorage.getItem("mode");
+                iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            }
+    
+            //Function for clearLocalStorage
+            function clearLocalStorage() {
+                localStorage.clear();
+                document.body.classList.value = "light-theme";
+                document.getElementById("icon-text").innerHTML = "Light Mode";
+                document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+            }
+    
+            // Closing of code 
+        </script>
     </body>
 </html>
             
