@@ -5,6 +5,20 @@
     Description: CSS for the HTML
 */
 
+/** 
+Text, font style, bottom margin for app-header
+*/
+
+.app-header {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+    background-color: initial;
+    border: none;
+}
+
 /**
 Text style for card
 */
@@ -29,4 +43,15 @@ font style for form field
 
 .form-field {
     text-align: center;
+}
+
+/**
+font style for danger
+*/
+
+.danger {
+    text-align: center;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
 }

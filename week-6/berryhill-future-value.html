@@ -41,25 +41,40 @@
             <h1 class="app-header">Welcome to the Future Value App!</h1>
 
             <div class="card">
+
+                <!-- Name of card section -->
+                
                 <div class="card-title">Future Value Calculator</div>
                 
+                    <!-- Error location area -->
+
                     <div class="danger" id="errorLog"></div>
 
+                    <!-- Opening of card content -->
+
                     <div class="form-field">
+
+                        <!-- Monthly Payment section -->
 
                         <div class="form-field row">
                             <label for="txtMonthlyPayment" class="col-5 form-label">Monthly payment:</label>
                             <input type="text" class="input col-7" id="txtMonthlyPayment">
                         </div>
                 
+                        <!-- Interest Rate section -->
+
                         <div class="form-field row">
                             <label class="col-5 form-label" for="txtYearlyRate">Interest Rate:</label>
                             <input type="text" class="input col-7" id="txtYearlyRate">                    
                         </div>
 
-                        <div class="instructions">
+                        <!-- Danger section -->
+
+                        <div class="directions">
                             <i class="danger">Enter 11% as 11:1:</i>
                         </div>
+
+                        <!-- Selection of Years section -->
 
                         <div class="form-field row">
                             <label for="listNumOfYears" class="col-5 form-label">Number of Years:</label>
@@ -76,11 +91,14 @@
                                 <option value="10">10</option>
                             </select>
                         </div>
-                    </div>
-            </div>
 
-            <div>
-                <button class="btn btn-primary" id="btnCalculate">Calculate</button>
+                        <!-- Button section -->
+
+                        <div>
+                            <button class="btn btn-primary" id="btnCalculate">Calculate</button>
+                        </div>
+
+                    </div>
             </div>
 
             <!-- Button for return-->
@@ -91,43 +109,60 @@
                                     
             <br>
 
+            <!-- Second Card information -->
+
             <div class="card">
+
+                <!-- JavaScript output location -->
+
                 <div class="card-title">Calculation as of <span id="today"></span></div>
                 <div class="form-field futureValues">
                     
                     <div class="assign-results-text" id="futureValue"></div>
+
+                <!-- Closing of code -->
+
                 </div>
             </div>
 
         </div>
 
+        <!-- JavaScript within HTML -->
+
         <script type="module">
-            
+
+            //Import FinanceCalculator and Validator          
             import { FinanceCalculator } from './finance-calculator.js';
             import { Validator } from './validator.js';
 
+            // Layout to JavaScript
             document.addEventListener('DOMContentLoaded', () => {
                 const todayElement = document.getElementById('today');
                 todayElement.innerHTML = new Date().toLocaleDateString('en-US');
 
                 const calculateButton = document.getElementById('btnCalculate');
+                // Build function to add btn calculator
                 calculateButton.addEventListener('click', () => {
+                    //Make const have value
                     const monthlyPayment = parseFloat(document.getElementById('txtMonthlyPayment').value);
                     const rate = parseFloat(document.getElementById('txtYearlyRate').value);
                     const years = parseInt(document.getElementById('listNumOfYears').value);
                     const errorLogE1 = document.getElementById('errorLog');
                     const errorLog = [];
 
+                    //Make const have value
                     const monthlyPaymentValidator = new Validator('Monthly Payment', monthlyPayment);
                     monthlyPaymentValidator.addRequiredField();
                     monthlyPaymentValidator.addRequiredFloatField();
                     monthlyPaymentValidator.addFloatMaxField(100);
 
+                    //Make const have value
                     const rateValidator = new Validator('Interest Rate', rate);
                     rateValidator.addRequiredField();
                     rateValidator.addRequiredFloatField();
                     rateValidator.addFloatMaxField(100);
 
+                    //Make error message for input
                     if (!monthlyPaymentValidator.validate()) {
                         for (const message of monthlyPaymentValidator.messages) {
                             errorLog.push(message);
