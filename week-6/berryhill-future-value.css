@@ -24,6 +24,7 @@ Text style for card
 */
 
 .card {
+    width: 95%;
     text-align: center;
 }
 
@@ -46,6 +47,15 @@ font style for form field
 }
 
 /**
+font style for form label
+*/
+
+.form-label {
+    display: inline-block;
+    padding-top: 1rem;
+}
+
+/**
 font style for danger
 */
 
@@ -54,4 +64,13 @@ font style for danger
     color: #df546a;
     font-size: 12px;
     letter-spacing: 2px;
+}
+
+.input {
+    width: 15%;
+    text-align: right;
+}
+
+.drop-down-menu {
+    width: 5%;
 }

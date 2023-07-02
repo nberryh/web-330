@@ -178,7 +178,7 @@
                     if (monthlyPaymentValidator.validate() && rateValidator.validate()) {
                         errorLogE1.innerHTML = '';
                         const futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
-                        document.getElementById('futureValue').innerHTML = `Future Value: ${futureValue}`;           
+                        document.getElementById('futureValue').innerHTML = `The future value is $${futureValue.toLocaleString()}`;           
                     } else {
                         errorLogE1.innerHTML = errorLog.map(message => `<li>${message}</li>`).join('');
                     }
