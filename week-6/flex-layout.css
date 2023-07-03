@@ -8,6 +8,10 @@
         Angular FlexLayout: https://github.com/angular/flex-layout
  */
 
+ /** 
+Styles for root
+*/
+
  :root {
     --col-1: 8.33%;
     --col-2: 16.66%;
@@ -23,11 +27,19 @@
     --col-12: 100%;
 }
 
+/** 
+Styles for container
+*/
+
 .container {
     margin-right: auto;
     margin-left: auto;
     width: 100%;
 }
+
+/** 
+Styles for row
+*/
 
 .row {
     box-sizing: border-box;
@@ -37,6 +49,10 @@
     margin-left: -0.5rem;
 }
 
+/** 
+Styles for row >
+*/
+
 .row > * {
     box-sizing: border-box;
     flex-shrink: 0;
@@ -44,6 +60,10 @@
     max-width: 100%;
     margin-top: 10px;
 }
+
+/** 
+Styles for col
+*/
 
 .col-1,
 .col-2,
@@ -61,6 +81,10 @@
     padding-right: .5rem;
     padding-left: .5rem;
 }
+
+/** 
+Styles for cols
+*/
 
 .col-1 { width: var(--col-1); }
 .col-2 { width: var(--col-2); }

@@ -66,10 +66,18 @@ font style for danger
     letter-spacing: 2px;
 }
 
+/**
+Style for input
+*/
+
 .input {
     width: 15%;
     text-align: right;
 }
+
+/**
+Width for drop down menu
+*/
 
 .drop-down-menu {
     width: 5%;
