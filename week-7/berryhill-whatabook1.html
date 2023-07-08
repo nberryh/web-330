@@ -1,0 +1,201 @@
+<!--
+    Title: berryhill-whatabook1.html.html
+    Author: Nolan Berryhill
+    Date: 07/09/2023
+    Description: Value App for Week 7
+-->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- head of index.html -->
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WEB 330 - Enterprise JavaScript II</title>
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-whatabook1.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="theme.js"></script>
+    </head>
+
+    <body class="light-theme">
+        
+        <div id="container">
+
+            <!-- Button to switch themes-->
+
+            <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <!-- Break in page-->
+
+            <br>
+            
+            <!-- Heading of section -->
+
+            <h1 class="app-header">Welcome to the WhataBook, Part 1 App!</h1>
+
+            <div class="card">
+                <div class="card-title">Book Listing</div>
+                <div class="card-content" id="bookList">
+
+                </div>
+            </div>
+
+            <!-- Button for return-->
+
+            <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+
+            <div class="card">
+                <div class="card-title">Selected Book</div>
+                <div class="card-content" id="selectedBook">
+
+                </div>
+            </div>
+
+            
+            <!-- JavaScript within HTML -->
+
+            <script type="module">
+
+                const fileName = 'books.xml';
+
+                fetch(fileName)
+                    .then(res => res.text())
+                    .then(data => {
+                        const domParser = new DOMParser();
+                        const xmlBooks = domParser.parseFromString(data, 'text/xml');
+
+                        loadBooks(xmlBooks);
+                        addIsbnClickEvents();
+                    });
+
+                function loadBooks(xml) {
+                    const books = xml.getElementsByTagName("book");
+
+                    let tableData = `
+                        <table id="bookTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>ISBN</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Pages</th>
+                                    <th>Authors</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    for (const book of books) {
+                        const isbn = book.getElementsByTagName("isbn")[0].textContent;
+                        const title = book.getElementsByTagName("title")[0].textContent;
+                        const description = book.getElementsByTagName("description")[0].textContent;
+                        const pages = book.getElementsByTagName("pages")[0].textContent;
+                        const authors = book.getElementsByTagName("authors")[0].textContent;
+
+                        tableData += `
+                            <tr>
+                                <td data-value="ISBN"><a class="isbn-link" href="#" data-value="${isbn}">${isbn}</a></td>
+                                <td data-value="Title">${title}</td>
+                                <td data-value="Description">${description}</td>
+                                <td data-value="Pages">${pages}</td>
+                                <td data-value="Authors">${authors}</td>
+                            </tr>
+                        `;
+                    }
+
+                    tableData += `
+                            </tbody>
+                        </table>
+                    `;
+
+                    document.getElementById('bookList').innerHTML = tableData;
+                }
+
+                function anchorClicked(event, data) {
+                    event.preventDefault();
+
+                    let self= event.target;
+                    let cell = self.parentElement;
+                    let row = cell.parentElement;
+
+                    let bookData = `<ul style="list-style-type: none;">`;
+                    bookData += `<li><b>ISBN:</b> ${row.cells[0].innerText}</li>`;
+                    bookData += `<li><b>Title:</b> ${row.cells[1].innerText}</li>`;
+                    bookData += `<li><b>Description:</b> ${row.cells[2].innerText}</li>`;
+                    bookData += `<li><b>Pages:</b> ${row.cells[3].innerText}</li>`;
+                    bookData += `<li><b>Author:</b> ${row.cells[4].innerText}</li>`;
+                    bookData += `</ul>`;
+
+                    document.getElementById('selectedBook').innerHTML = bookData;
+                }
+
+                function addIsbnClickEvents() {
+                    const viewButtons = document.querySelectorAll("#bookTable tbody .isbn-link");
+
+                    for (let i = 0; i < viewButtons.length; i++) {
+                        viewButtons[i].addEventListener('click', function(event) {
+                            event.preventDefault();
+                            const bookData = [
+                                viewButtons[i].getAttribute('data-value'),
+                                viewButtons[i].parentNode.nextElementSibling.innerText,
+                                viewButtons[i].parentNode.nextElementSibling.nextElementSibling.innerText,
+                                viewButtons[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
+                                viewButtons[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText
+                            ];
+                            anchorClicked(event, bookData);
+                        });
+                    }
+                }
+            
+            </script>
+            
+            <script>
+
+                //Set default theme to light
+                setDefaultTheme();
+        
+                //Set function layout
+                function toggleMode(x) {
+        
+                    //Assigns variables
+                    let colorTheme = document.body.classList;
+                    let iconMode = x.classList;
+        
+                    //Assigns string actions
+                    if (colorTheme.value === "light-theme") {
+                        localStorage.clear();
+                        localStorage.setItem("mode", "dark-theme");
+                        localStorage.setItem("iconMode", "fa-toggle-on");
+                        localStorage.setItem("iconText", "Dark Mode");
+                    } else {
+                        localStorage.clear();
+                        localStorage.setItem("mode", "light-theme");
+                        localStorage.setItem("iconMode", "fa-toggle-off");
+                        localStorage.setItem("iconText", "Light Mode");
+                    }
+        
+                    //Assigns output to HTML
+                    colorTheme.value = localStorage.getItem("mode");
+                    iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                    document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+                }
+        
+                //Function for clearLocalStorage
+                function clearLocalStorage() {
+                    localStorage.clear();
+                    document.body.classList.value = "light-theme";
+                    document.getElementById("icon-text").innerHTML = "Light Mode";
+                    document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+                }
+        
+                // Closing of code 
+            </script>
+
+    </body>
+</html>
