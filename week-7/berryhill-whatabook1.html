@@ -39,6 +39,8 @@
 
             <h1 class="app-header">Welcome to the WhataBook, Part 1 App!</h1>
 
+            <!-- Section for card Book Listing -->
+
             <div class="card">
                 <div class="card-title">Book Listing</div>
                 <div class="card-content" id="bookList">
@@ -47,7 +49,10 @@
             </div>
 
             <!-- Button for return-->
-                <a href="https://nberryh.github.io/web-330/index.html" id="return-home" class="return-home">Return</a>
+
+            <a href="https://nberryh.github.io/web-330/index.html" id="return-home" class="return-home">Return</a>
+
+            <!-- Section for card Selected Book -->
 
             <div class="card">
                 <div class="card-title">Selected Book</div>
@@ -61,8 +66,10 @@
 
             <script type="module">
 
+                //Set fileName with value
                 const fileName = 'books.xml';
 
+                //Set fetch for filename
                 fetch(fileName)
                     .then(res => res.text())
                     .then(data => {
@@ -73,6 +80,7 @@
                         addIsbnClickEvents();
                     });
 
+                //Function for loadBooks with table layout
                 function loadBooks(xml) {
                     const books = xml.getElementsByTagName("book");
 
@@ -90,6 +98,7 @@
                             <tbody>
                     `;
 
+                    //For const for books information
                     for (const book of books) {
                         const isbn = book.getElementsByTagName("isbn")[0].textContent;
                         const title = book.getElementsByTagName("title")[0].textContent;
@@ -116,6 +125,7 @@
                     document.getElementById('bookList').innerHTML = tableData;
                 }
 
+                //Function for anchorClicked
                 function anchorClicked(event, data) {
                     event.preventDefault();
 
@@ -134,6 +144,7 @@
                     document.getElementById('selectedBook').innerHTML = bookData;
                 }
 
+                //Function for addIsbnClickEvents
                 function addIsbnClickEvents() {
                     const viewButtons = document.querySelectorAll("#bookTable tbody .isbn-link");
 
