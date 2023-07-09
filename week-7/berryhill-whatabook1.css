@@ -1,0 +1,65 @@
+/**
+    Title: berryhill-whatabooks1.css
+    Author: Nolan Berryhill
+    Date: 09 July 2023
+    Description: CSS for the HTML
+*/
+
+/** 
+Text, font style, bottom margin for app-header
+*/
+
+.app-header {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: black;
+    background-color: initial;
+    border: none;
+}
+
+/**
+Text style for card title
+*/
+
+.card-title {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+/**
+Text style for card
+*/
+
+.card {
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+/**
+color, font style for shopping cart table
+*/
+
+#bookList td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+
+#bookList tr {
+    border-width: 10px;
+}
+
+#selectedBook {
+    text-align: center;
+}
+
+#selectedBook li {
+    text-align: left;
+}

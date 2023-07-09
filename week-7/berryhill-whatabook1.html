@@ -47,8 +47,7 @@
             </div>
 
             <!-- Button for return-->
-
-            <a href="https://nberryh.github.io/web-330/index.html" class="return-home">Return</a>
+                <a href="https://nberryh.github.io/web-330/index.html" id="return-home" class="return-home">Return</a>
 
             <div class="card">
                 <div class="card-title">Selected Book</div>
@@ -124,7 +123,7 @@
                     let cell = self.parentElement;
                     let row = cell.parentElement;
 
-                    let bookData = `<ul style="list-style-type: none;">`;
+                    let bookData = `<ul style="list-style-type: none">`;
                     bookData += `<li><b>ISBN:</b> ${row.cells[0].innerText}</li>`;
                     bookData += `<li><b>Title:</b> ${row.cells[1].innerText}</li>`;
                     bookData += `<li><b>Description:</b> ${row.cells[2].innerText}</li>`;

@@ -12,6 +12,8 @@ Color and text decoration for return-home
 .return-home {
     color: #4F3674;
     text-decoration: none;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /** 
