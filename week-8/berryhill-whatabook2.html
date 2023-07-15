@@ -1,0 +1,241 @@
+<!--
+    Title: berryhill-whatabook2.html.html
+    Author: Nolan Berryhill
+    Date: 07/16/2023
+    Description: Whatabook2 App for Week 8
+-->
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- head of index.html -->
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WEB 330 - Enterprise JavaScript II</title>
+        <link href="site.css" type="text/css" rel="stylesheet">
+        <link href="theme.css" type="text/css" rel="stylesheet">
+        <link href="berryhill-whatabook2.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="theme.js"></script>
+    </head>
+
+    <body class="light-theme">
+        
+        <div id="container">
+
+            <!-- Button to switch themes-->
+
+            <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" style="font-size: 28px;"><span id="icon-text"></span></i>
+            
+            <!-- Break in page-->
+
+            <br>
+            
+            <!-- Heading of section -->
+
+            <h1 class="app-header">Welcome to the WhataBook, Part 2 App!</h1>
+
+            <!-- Section for card Book Listing -->
+
+            <div class="card">
+                <div class="card-title">Book Listing</div>
+                <div class="card-content" id="bookList">
+
+                </div>
+            </div>
+
+            <!-- Button for return-->
+
+            <a href="https://nberryh.github.io/web-330/index.html" id="return-home" class="return-home">Return</a>
+
+            <!-- Section for card Selected Book -->
+
+            <div class="card">
+                <div class="card-title">Selected Book</div>
+                <div class="card-content" id="selectedBook">
+
+                </div>
+            </div>
+
+            <script type="module">
+
+                import { HttpClient } from './http-client.js'
+    
+                function addIsbnClickEvents() {
+                    let viewButtons = document.querySelectorAll('#bookList tbody .isbn-link');
+    
+                    for (let i = 0; i < viewButtons.length; i++) {
+                        viewButtons[i].addEventListener('click', getBook);
+                    }
+                }
+
+                const http = new HttpClient();
+    
+                const isbns = [
+                    '0345339681',
+                    '0261103571',
+                    '9780593099322',
+                    '9780261102361',
+                    '9780261102378',
+                    '9780590302715',
+                    '9780316769532',
+                    '9780743273565',
+                    '9780590405959',
+                ];
+    
+                const params = {
+                    "bibkeys": `ISBN:${isbns.join(',')}`,
+                    "format": "json",
+                    "jscmd": "details"
+                }
+    
+                http.get("https://openlibrary.org/api/books", params).then(res => {
+                    console.log(res);
+                    document.getElementById("bookList").innerHTML = buildHtmlString(res, "table");
+                    addIsbnClickEvents();
+                })
+    
+                .catch(e => {
+                    console.log(e);
+                });
+    
+                function getBook(e) {
+    
+                    e.preventDefault();
+    
+                    let self = this;
+    
+                    let isbn = self.innerText;
+    
+                    const params = {
+                        "bibkeys": `ISBN:${isbn}`,
+                        "format": "json",
+                        "jscmd": "details"
+                    }
+    
+                    http.get("https://openlibrary.org/api/books", params).then(res => {
+                        console.log(res);
+                        document.getElementById("selectedBook").innerHTML = buildHtmlString(res, "ul");
+                    })
+    
+                    .catch(e => {
+                        console.log(e);
+                    });
+                }
+    
+                function buildHtmlString(res, format) {           
+                    let tableString = `<table>
+                                            <tr>
+                                                <th>ISBN</th>
+                                                <th>Title</th>
+                                                <th>Author(s)</th>
+                                                <th>Publisher</th>
+                                                <th>Publish Year</th>
+                                            </tr>
+                                            </tbody>`;
+    
+                    let ulString = '';
+    
+                    for (const key in res) {
+                        if (res.hasOwnProperty(key)) {
+                            let authors = [];
+
+                            if (res[key].details.authors) {
+
+                                authors = res[key].details.authors.map(function (author) {
+                                    return author.name;
+                                })
+                            }
+
+                            let book = {
+                                isbn: res[key].details_isbn13 ? res[key].details.isbn_13 : res[key].details.isbn_10,
+                                title: res[key].details.title,
+                                description: res[key].details.subtitle ? res[key].details.subtitle : "N/A",
+                                pages: res[key].details.number_of_pages ? res[key].details.number_of_pages : "N/A",
+                                authors: authors.join(",")
+                            }
+
+                            if (format === 'table') {
+                                tableString += `
+                                <tr>
+                                    <td><a href="#" class="isbn-link">${book.isbn}</a></td>
+                                    <td>${book.title}</td>
+                                    <td>${book.description}</td>
+                                    <td>${book.pages}</td>
+                                    <td>${book.authors}</td>
+                                </tr>`;
+                            } else {
+                                ulString += `
+                                <li>
+                                    <b>ISBN:</b> ${book.isbn}<br>
+                                    <b>Title:</b> ${book.title}<br>
+                                    <b>Description:</b> ${book.description}<br>
+                                    <b>Pages:</b> ${book.pages}<br>
+                                    <b>Author(s):</b> ${book.authors}<br>
+                                </li>`;
+                            }
+                        }
+                    }
+    
+                    tableString += '</tbody></table>';
+    
+                    if (format === 'table') {
+                        return tableString;
+                    } else {
+                        return `<ul>${ulString}</ul>`;
+                    }
+    
+                }
+    
+            </script>
+
+        </div>    
+
+        <script>
+
+            //Set default theme to light
+            setDefaultTheme();
+    
+            //Set function layout
+            function toggleMode(x) {
+    
+                //Assigns variables
+                let colorTheme = document.body.classList;
+                let iconMode = x.classList;
+    
+                //Assigns string actions
+                if (colorTheme.value === "light-theme") {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "dark-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-on");
+                    localStorage.setItem("iconText", "Dark Mode");
+                } else {
+                    localStorage.clear();
+                    localStorage.setItem("mode", "light-theme");
+                    localStorage.setItem("iconMode", "fa-toggle-off");
+                    localStorage.setItem("iconText", "Light Mode");
+                }
+    
+                //Assigns output to HTML
+                colorTheme.value = localStorage.getItem("mode");
+                iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+                document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+            }
+    
+            //Function for clearLocalStorage
+            function clearLocalStorage() {
+                localStorage.clear();
+                document.body.classList.value = "light-theme";
+                document.getElementById("icon-text").innerHTML = "Light Mode";
+                document.getElementById("icon-mode").classList.value = "fa fa-toggle-off pull-right";
+            }
+    
+            // Closing of code 
+        </script>
+
+    </body>
+</html>
