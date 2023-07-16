@@ -1,5 +1,5 @@
 <!--
-    Title: berryhill-whatabook2.html.html
+    Title: berryhill-whatabook2.html
     Author: Nolan Berryhill
     Date: 07/16/2023
     Description: Whatabook2 App for Week 8
@@ -63,8 +63,10 @@
 
             <script type="module">
 
+                //Imports HttpClient
                 import { HttpClient } from './http-client.js'
     
+                //Function for addIsbnClickEvents
                 function addIsbnClickEvents() {
                     let viewButtons = document.querySelectorAll('#bookList tbody .isbn-link');
     
@@ -73,8 +75,10 @@
                     }
                 }
 
+                //Set http with value
                 const http = new HttpClient();
     
+                //Set isbns with value
                 const isbns = [
                     '0345339681',
                     '0261103571',
@@ -87,22 +91,26 @@
                     '9780590405959',
                 ];
     
+                //Set params with value
                 const params = {
                     "bibkeys": `ISBN:${isbns.join(',')}`,
                     "format": "json",
                     "jscmd": "details"
                 }
     
+                //Pulls from openlibrary
                 http.get("https://openlibrary.org/api/books", params).then(res => {
                     console.log(res);
                     document.getElementById("bookList").innerHTML = buildHtmlString(res, "table");
                     addIsbnClickEvents();
                 })
     
+                //Catch
                 .catch(e => {
                     console.log(e);
                 });
     
+                //Function for getBook
                 function getBook(e) {
     
                     e.preventDefault();
@@ -127,6 +135,7 @@
                     });
                 }
     
+                //function for buildHtmlString
                 function buildHtmlString(res, format) {           
                     let tableString = `<table>
                                             <tr>
