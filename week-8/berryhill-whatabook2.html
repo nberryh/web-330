@@ -132,16 +132,20 @@
                                             <tr>
                                                 <th>ISBN</th>
                                                 <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Pages</th>
                                                 <th>Author(s)</th>
-                                                <th>Publisher</th>
-                                                <th>Publish Year</th>
                                             </tr>
                                             </tbody>`;
     
                     let ulString = '';
     
                     for (const key in res) {
+
+                        ulString += `<ul style="list-style-type: none;">`;
+
                         if (res.hasOwnProperty(key)) {
+
                             let authors = [];
 
                             if (res[key].details.authors) {
@@ -150,13 +154,13 @@
                                     return author.name;
                                 })
                             }
-
+                            
                             let book = {
-                                isbn: res[key].details_isbn13 ? res[key].details.isbn_13 : res[key].details.isbn_10,
-                                title: res[key].details.title,
-                                description: res[key].details.subtitle ? res[key].details.subtitle : "N/A",
-                                pages: res[key].details.number_of_pages ? res[key].details.number_of_pages : "N/A",
-                                authors: authors.join(",")
+                                isbn: res[key].details.isbn_13 ? res[key].details.isbn_13 : res[key].details.isbn_10,
+                                title: res[key].details.title,                               
+                                description: res[key].details.subtitle ? res[key].details.subtitle : 'N/A',
+                                pages: res[key].details.number_of_pages ? res[key].details.number_of_pages : 'N/A',
+                                authors: authors.join(', ')
                             }
 
                             if (format === 'table') {
